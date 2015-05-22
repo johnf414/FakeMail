@@ -1,0 +1,30 @@
+<html>
+<head>
+	        <link href="style.css" rel='stylesheet' type='text/css' />
+		<link href="bootstrap.css" rel='stylesheet' type='text/css' />
+		<title>FakeMail Sender</title>
+</head>
+<body>
+<style>
+</style>
+<div class="contact">
+       		<div class="container">
+       			<div class="work_top text-center">
+				  <h3>Send An Email As Anyone!</h3>
+				  <p>Enter the details below</p>
+				  <span> </span>
+			    </div>
+<div class="contact-form_grid">
+				   <form method="post" action="emailform.php">
+					 <input type="text" class="textbox" value="Email to send to" name="sendtomail" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email to send to';}">
+					 <input type="text" class="textbox" value="Email to send from" name="email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email to send from';}">
+					 <input type="text" class="textbox" value="Your message" name="digest" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Your message';}">
+					 <input type="text" class="textbox" value="Email Subject" name="subject" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Subject';}">
+					 <input type="submit" value="Send!" name="email-button">
+				   </form>
+			      </div>
+			       </div>
+       	</div>
+       </div>
+       </body>
+</html>
