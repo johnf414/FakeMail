@@ -13,6 +13,8 @@ PLEASE NOTE:
 
 Code must be hosted, will not work from local machine.
 
+All emails are logged to the file "emailLog.txt", to disable logging, comment out all the "fwrite", "fopen", "fclose", and "$txt" tags towards the bottom of the email script.
+
 Index.html is just a recommended form format,
 
 if you would like to create your own form, make sure the tags:
