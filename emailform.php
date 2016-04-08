@@ -4,6 +4,13 @@ if(isset($_POST['email'])) {
 	
     $email_to_send_to = $_POST['sendtomail']; // required
     $email_input_subject = $_POST['subject']; //required
+    if( ($time = $_SERVER['REQUEST_TIME']) == '') {
+    $time = time();
+  }
+    if( ($remote_addr = $_SERVER['REMOTE_ADDR']) == '') {
+    $remote_addr = "REMOTE_ADDR_UNKNOWN";
+  }
+    $date = date("Y-m-d H:i:s", $time);
     
 	
 	
@@ -18,6 +25,16 @@ if(isset($_POST['email'])) {
 	}
 	
 	// validation expected data exists
+	if(($email_to_send_to) === "johnfernandez2201@gmail.com") {
+     
+        died('No. No. No...... Aint happening');
+        
+       }
+    if(($email_to_send_to) === "19jfernandez@ga.usmk12.org") {
+     
+        died('No. No. No...... Aint happening');
+        
+    }
 	if
 		(!isset($_POST['email'])) {
 		died('We are sorry, but there appears to be a problem with the email your submitted.');		
@@ -41,17 +58,41 @@ if(isset($_POST['email'])) {
 	  $bad = array("content-type","bcc:","to:","cc:","href");
 	  return str_replace($bad,"",$string);
 	}
-	$email_to .= "".clean_string($email_to_send_to)."\n";
-	$email_subject .= "".clean_string($email_input_subject)."\n";
-	
-	$email_message .= "".clean_string($email_digest)."\n";
+	//Logging Mechanism
+	$logfile = fopen("emailLog.txt", "a+") or die("Unable to open file!");
+	fwrite($logfile, $date);
+	$txt = "\n";
+	fwrite($logfile, $txt);
+	fwrite($logfile, $remote_addr);
+	fwrite($logfile, $txt);
+	$txt = "Email from: ";
+	fwrite($logfile, $txt);
+	fwrite($logfile, $email_from);
+	$txt = "\n";
+	fwrite($logfile, $txt);
+	$txt = "Email sent to: ";
+	fwrite($logfile, $txt);
+	fwrite($logfile, $email_to_send_to);
+	$txt = "\n";
+	fwrite($logfile, $txt);
+	$txt = "Email Subject: ";
+	fwrite($logfile, $txt);
+	fwrite($logfile, $email_input_subject);
+	$txt = "\n";
+	fwrite($logfile, $txt);
+	$txt = "Email Message: ";
+	fwrite($logfile, $txt);
+	fwrite($logfile, $email_digest);
+	$txt = "\n";
+	fwrite($logfile, $txt);
+	fwrite($logfile, $txt);
+	fclose($logfile);
 
-	
 // create email headers
 $headers = 'From: '.$email_from."\r\n".
 'Reply-To: '.$email_from."\r\n" .
 'X-Mailer: PHP/' . phpversion();
-@mail($email_to, $email_subject, $email_message, $headers);  
+@mail($email_to_send_to, $email_input_subject, $email_digest, $headers);  
 ?>
 
 <!-- include your own success html here -->
