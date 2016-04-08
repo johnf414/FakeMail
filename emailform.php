@@ -25,16 +25,7 @@ if(isset($_POST['email'])) {
 	}
 	
 	// validation expected data exists
-	if(($email_to_send_to) === "johnfernandez2201@gmail.com") {
-     
-        died('No. No. No...... Aint happening');
-        
-       }
-    if(($email_to_send_to) === "19jfernandez@ga.usmk12.org") {
-     
-        died('No. No. No...... Aint happening');
-        
-    }
+	
 	if
 		(!isset($_POST['email'])) {
 		died('We are sorry, but there appears to be a problem with the email your submitted.');		
